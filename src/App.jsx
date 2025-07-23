@@ -23,7 +23,7 @@ export default function App() {
 
   // 🟦 GET /users
   const fetchAllUsers = () => {
-    axios.get(BASE_URL)
+    axios.get(`${BASE_URL}/users`)
       .then(res => setUsers(res.data)) // update the users state
       .catch(() => alert("Fetch failed"));
   };
@@ -57,7 +57,7 @@ export default function App() {
         .catch(() => alert("Update failed"));
     } else {
       // POST
-      axios.post(BASE_URL, form)
+      axios.post(`${BASE_URL}`, form)
         .then(() => {
           alert("User added");
           setForm({ name: '', email: '' });
