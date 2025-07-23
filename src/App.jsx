@@ -31,7 +31,7 @@ export default function App() {
   // 🟦 GET /users/:id
   const fetchUserById = () => {
     if (!searchId) return alert("Enter ID");
-    axios.get(`${BASE_URL}/${searchId}`)
+    axios.get(`${BASE_URL}/users/${searchId}`)
       .then(res => alert(JSON.stringify(res.data, null, 2))) // show user info
       .catch(() => alert("User not found"));
   };
@@ -47,7 +47,7 @@ export default function App() {
 
     if (editId) {
       // PUT
-      axios.put(`${BASE_URL}/${editId}`, form)
+      axios.put(`${BASE_URL}/users/${editId}`, form)
         .then(() => {
           alert("User updated");
           setEditId(null);
@@ -57,7 +57,7 @@ export default function App() {
         .catch(() => alert("Update failed"));
     } else {
       // POST
-      axios.post(`${BASE_URL}`, form)
+      axios.post(`${BASE_URL}/users`, form)
         .then(() => {
           alert("User added");
           setForm({ name: '', email: '' });
@@ -69,7 +69,7 @@ export default function App() {
 
   // 🟥 DELETE /users/:id
   const handleDelete = (id) => {
-    axios.delete(`${BASE_URL}/${id}`)
+    axios.delete(`${BASE_URL}/users/${id}`)
       .then(() => {
         alert("User deleted");
         fetchAllUsers();
